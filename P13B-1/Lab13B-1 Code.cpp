@@ -32,7 +32,7 @@ int main(void)
 			yesOrNo = isLeapYear(year);
 			if (yesOrNo == true)
 			{
-				cout << year << " is a leap year." << endl;
+				cout << year << " is a leap year!" << endl;
 			}
 			else
 			{
