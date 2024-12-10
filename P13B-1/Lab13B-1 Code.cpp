@@ -1,8 +1,8 @@
 // File Name:     P13B-1
 // Author:        William Inkrott
 // Date:          12/12/24
-// Description:   Write a program that, when given a year under the Gregorian calendar, indicates whether or not that year is a leap year. 
-
+// Description:   Write a program that, when given a year and month under the Gregorian calendar, indicates whether or not that year is a leap year
+//                and how many days are in that month in that particular year. 
 
 int daysInMonth(int month, int year);
 bool isLeapYear(int year);
@@ -20,10 +20,12 @@ int main(void)
 {
 	int year = 0, month = 0, days = 0;
 	bool yesOrNo;
+	string nameOfMonth;
 	while (1 == 1)
 	{
 		year = 0;
 		cout << "Enter a month and a year or Q to quit: ";
+		cin >> month;
 		cin >> year;
 		if (year == 0)
 		{
@@ -33,8 +35,60 @@ int main(void)
 		{
 			if (month >=1 and month <= 12)
 			{
+				if (month == 1)
+				{
+					nameOfMonth = "January";
+				}
+				if (month == 2)
+				{
+					nameOfMonth = "Febraury";
+				}
+				if (month == 3)
+				{
+					nameOfMonth = "March";
+				}
+				if (month == 4)
+				{
+					nameOfMonth = "April";
+				}
+				if (month == 5)
+				{
+					nameOfMonth = "May";
+				}
+				if (month == 6)
+				{
+					nameOfMonth = "June";
+				}
+				if (month == 7)
+				{
+					nameOfMonth = "July";
+				}
+				if (month == 8)
+				{
+					nameOfMonth = "August";
+				}
+				if (month == 9)
+				{
+					nameOfMonth = "September";
+				}
+				if (month == 10)
+				{
+					nameOfMonth = "October";
+				}
+				if (month == 11)
+				{
+					nameOfMonth = "November";
+				}
+				if (month == 12)
+				{
+					nameOfMonth = "December";
+				}
 				days = daysInMonth(month, year);
-				cout << year << " of " << month << " has " << days << " days." << endl;
+				cout << nameOfMonth << " of " << year << " has " << days << " days." << endl;
+			}
+			else
+			{
+				cout << "Error. Month must be 1-12 and year must be >= 1582." << endl;
 			}
 		}
 		else
@@ -74,11 +128,19 @@ int daysInMonth(int month, int year)
 {
 	if (month == 1)
 	{
-		return 30;
+		return 31;
 	}
 	if (month == 2)
 	{
-		return ;
+		bool leap = isLeapYear(year);
+		if (leap == true)
+		{
+			return 29;
+		}
+		if (leap == false)
+		{
+			return 28;
+		}
 	}
 	if (month == 3)
 	{
