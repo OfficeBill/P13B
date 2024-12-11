@@ -6,6 +6,7 @@
 
 int daysInMonth(int month, int year);
 bool isLeapYear(int year);
+int dayNameFinder(int year, int month, int day);
 
 #include <iostream>
 #include <fstream>
@@ -18,14 +19,15 @@ using namespace std;
 
 int main(void)
 {
-	int year = 0, month = 0, days = 0;
+	int year = 0, month = 0, totdays = 0, day = 0, dayOfWeek = 0;
 	bool yesOrNo;
-	string nameOfMonth;
+	string nameOfMonth, dayOfWeekAlpha;
 	while (1 == 1)
 	{
 		year = 0;
 		cout << "Enter a month and a year or Q to quit: ";
 		cin >> month;
+		cin >> day;
 		cin >> year;
 		if (year == 0)
 		{
@@ -83,19 +85,73 @@ int main(void)
 				{
 					nameOfMonth = "December";
 				}
-				days = daysInMonth(month, year);
-				cout << nameOfMonth << " of " << year << " has " << days << " days." << endl;
+				totdays = daysInMonth(month, year);
+				dayOfWeek = dayNameFinder(year, month, day);
+				// 0sat, 1sun, 2mon, etc. 
+				if (dayOfWeek == 0)
+				{
+					dayOfWeekAlpha = "Saturday";
+				}
+				if (dayOfWeek == 1)
+				{
+					dayOfWeekAlpha = "Sunday";
+				}
+				if (dayOfWeek == 2)
+				{
+					dayOfWeekAlpha = "Monday";
+				}
+				if (dayOfWeek == 3)
+				{
+					dayOfWeekAlpha = "Tuesday";
+				}
+				if (dayOfWeek == 4)
+				{
+					dayOfWeekAlpha = "Wednesday";
+				}
+				if (dayOfWeek == 5)
+				{
+					dayOfWeekAlpha = "Thursday";
+				}
+				if (dayOfWeek == 6)
+				{
+					dayOfWeekAlpha = "Friday";
+				}
+				cout << dayOfWeekAlpha << ", " << nameOfMonth << " " << day << ", " << year << endl;
 			}
 			else
 			{
-				cout << "Error. Month must be 1-12 and year must be >= 1582." << endl;
+				cout << "Error. Please try again." << endl;
 			}
 		}
 		else
 		{
-			cout << "Error. Month must be 1-12 and year must be >= 1582." << endl;
+			cout << "Error. Please try again." << endl;
 		}
 	}
+}
+
+int dayNameFinder(int year, int month, int day)
+{
+	int newMonth = 0, newYear = 0, dayNumerical = 0;
+	if (month >= 3 and month <= 12)
+	{
+		newMonth = month;
+		newYear = year;
+	}
+	else
+	{
+		if (month == 1)
+		{
+			newMonth = 13;
+		}
+		if (month == 2)
+		{
+			newMonth = 14;
+		}
+		newYear = year - 1;
+	}
+	dayNumerical = (day + (((newMonth + 1) * 26) / 10) + newYear + (newYear / 4) + (6 * (newYear / 100)) + (newYear / 400)) % 7;
+	return dayNumerical;
 }
 
 bool isLeapYear(int year)
