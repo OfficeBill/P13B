@@ -1,8 +1,7 @@
 // File Name:     P13B-1
 // Author:        William Inkrott
 // Date:          12/12/24
-// Description:   Write a program that, when given a year and month under the Gregorian calendar, indicates whether or not that year is a leap year
-//                and how many days are in that month in that particular year. 
+// Description:   Write a program that, when given a date in the Gregorian calendar, outputs the day of the week, day, month, and year. 
 
 int daysInMonth(int month, int year);
 bool isLeapYear(int year);
@@ -19,75 +18,71 @@ using namespace std;
 
 int main(void)
 {
-	int year = 0, month = 0, totdays = 0, day = 0, dayOfWeek = 0;
+	int year = 0, month = 0, totdays = 0, day = 0, dayOfWeek = 0, printDay = 0;
 	bool yesOrNo;
 	string nameOfMonth, dayOfWeekAlpha;
 	while (1 == 1)
 	{
 		year = 0;
 		cout << "Enter a month and a year or Q to quit: ";
-		cin >> month;
-		cin >> day;
-		cin >> year;
-		if (year == 0)
+		cin >> Month;
+		cin >> Year;
+		if (Year == 0)
 		{
 			return 0;
 		}
-		if (year >= 1582)
+		if (Year >= 1582)
 		{
-			if (month >=1 and month <= 12)
-			{
-				if (month == 1)
+				if (nameOfMonth == "January")
 				{
-					nameOfMonth = "January";
+					month = 1;
 				}
-				if (month == 2)
+				if (nameOfMonth == "Febraury")
 				{
-					nameOfMonth = "Febraury";
+					month = 2;
 				}
-				if (month == 3)
+				if (nameOfMonth == "March")
 				{
-					nameOfMonth = "March";
+					month = 3;
 				}
-				if (month == 4)
+				if (nameOfMonth == "April")
 				{
-					nameOfMonth = "April";
+					month = 4;
 				}
-				if (month == 5)
+				if (nameOfMonth == "May")
 				{
-					nameOfMonth = "May";
+					month = 5;
 				}
-				if (month == 6)
+				if (nameOfMonth == "June")
 				{
-					nameOfMonth = "June";
+					month = 6;
 				}
-				if (month == 7)
+				if (nameOfMonth == "July")
 				{
-					nameOfMonth = "July";
+					month = 7;
 				}
-				if (month == 8)
+				if (nameOfMonth == "August")
 				{
-					nameOfMonth = "August";
+					month = 8;
 				}
-				if (month == 9)
+				if (nameOfMonth == "September")
 				{
-					nameOfMonth = "September";
+					month = 9;
 				}
-				if (month == 10)
+				if (nameOfMonth == "October")
 				{
-					nameOfMonth = "October";
+					month = 10;
 				}
-				if (month == 11)
+				if (nameOfMonth == "November")
 				{
-					nameOfMonth = "November";
+					month = 11;
 				}
-				if (month == 12)
+				if (nameOfMonth == "December")
 				{
-					nameOfMonth = "December";
+					month = 12;
 				}
 				totdays = daysInMonth(month, year);
 				dayOfWeek = dayNameFinder(year, month, day);
-				// 0sat, 1sun, 2mon, etc. 
 				if (dayOfWeek == 0)
 				{
 					dayOfWeekAlpha = "Saturday";
@@ -116,8 +111,36 @@ int main(void)
 				{
 					dayOfWeekAlpha = "Friday";
 				}
-				cout << dayOfWeekAlpha << ", " << nameOfMonth << " " << day << ", " << year << endl;
-			}
+
+
+
+
+				cout << "S"
+
+
+
+
+                        if (c = dayOfWeek)
+						{
+                           printDay = printDay + 1;
+						   cout << printDay;
+						}
+				for (r = 0; r < 7; r++)
+				{
+					for (c = 0; c < 5; c++)
+					{
+						
+					}
+					cout << endl;
+				}
+
+
+
+
+
+
+
+
 			else
 			{
 				cout << "Error. Please try again." << endl;
