@@ -26,7 +26,7 @@ int main(void)
 						  "30 31                                   " };
 	int year = 0, month = 0, totdays = 0, day = 1, dayOfWeek = 0, index = 0, indexEnd = 0, printIndexEnd = 0;
 	bool boolIsLeapYear;
-	string nameOfMonth, dayOfWeekAlpha;
+	string nameOfMonth, monthAbrev;
 	while (1 == 1)
 	{
 		year = 0;
@@ -42,50 +42,62 @@ int main(void)
 			if (nameOfMonth == "January")
 			{
 				month = 1;
+				monthAbrev = "Jan";
 			}
 			if (nameOfMonth == "February")
 			{
 				month = 2;
+				monthAbrev = "Feb";
 			}
 			if (nameOfMonth == "March")
 			{
 				month = 3;
+				monthAbrev = "Mar";
 			}
 			if (nameOfMonth == "April")
 			{
 				month = 4;
+				monthAbrev = "Apr";
 			}
 			if (nameOfMonth == "May")
 			{
 				month = 5;
+				monthAbrev = "May";
 			}
 			if (nameOfMonth == "June")
 			{
 				month = 6;
+				monthAbrev = "June";
 			}
 			if (nameOfMonth == "July")
 			{
 				month = 7;
+				monthAbrev = "Jul";
 			}
 			if (nameOfMonth == "August")
 			{
 				month = 8;
+				monthAbrev = "Aug";
 			}
 			if (nameOfMonth == "September")
 			{
 				month = 9;
+				monthAbrev = "Sep";
 			}
 			if (nameOfMonth == "October")
 			{
 				month = 10;
+				monthAbrev = "Oct";
 			}
 			if (nameOfMonth == "November")
 			{
 				month = 11;
+				monthAbrev = "Nov";
 			}
 			if (nameOfMonth == "December")
 			{
 				month = 12;
+				monthAbrev = "Dec";
 			}
 
 			totdays = daysInMonth(month, year);
@@ -99,14 +111,18 @@ int main(void)
 				index = dayOfWeek * 3;
 			}
 			indexEnd = index + 19;
-			cout << nameOfMonth << " " << year << endl;
-			cout << "Su Mo Tu We Th Fr Sa" << endl;
+			
 
 			string stringCompare;
 			string stringTotDays = to_string(totdays);
+			string yearName = to_string(year);
 			string substring;
 			int totalDayLocation;
-			
+			ofstream outfile(monthAbrev + yearName + ".txt");
+			cout << nameOfMonth << " " << year << endl;
+			cout << "Su Mo Tu We Th Fr Sa" << endl;
+			outfile << nameOfMonth << " " << year << endl;
+			outfile << "Su Mo Tu We Th Fr Sa" << endl;
 			for (int i = 0; i <= 5; i++)
 			{
 				substring = calendar[i].substr(index, 20);
@@ -114,10 +130,16 @@ int main(void)
 				if (totalDayLocation == -1)
 				{
 					cout << substring << endl;
+					outfile << substring << endl;
 				}
 				else
 				{
 					cout << substring.substr(0, totalDayLocation + 2) << endl;
+					outfile << substring.substr(0, totalDayLocation + 2) << endl;
+					outfile.close();
+					cout << endl;
+					cout << "Output file: " << monthAbrev << yearName << ".txt";
+					cout << endl;
 					break;
 				}
 			}
